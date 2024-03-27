@@ -28,13 +28,15 @@
     pkgs.jq
     pkgs.just
     pkgs.navi
+    pkgs.nil
+    pkgs.nixpkgs-fmt
     pkgs.ripgrep
     pkgs.rustup
     pkgs.starship
     pkgs.zoxide
 
-    pkgs.carapace
     pkgs.atuin
+    pkgs.carapace
     pkgs.gitui
     pkgs.sublime-merge
   ];
@@ -73,11 +75,11 @@
   programs.home-manager.enable = true;
 
   programs = {
-    git = (import ./git.nix { inherit pkgs; });
-    nullshell = (import ./nullshell.nix { inherit pkgs; });
-    tmux = (import ./tmux.nix { inherit pkgs; });
-    zellj = (import ./zellj.nix { inherit pkgs; });
-    zsh = (import ./zsh.nix { inherit pkgs; });
+    git = (import ./programs/git.nix { inherit pkgs; });
+    nushell = (import ./programs/nushell.nix { inherit pkgs; });
+    tmux = (import ./programs/tmux.nix { inherit pkgs; });
+    zellij = (import ./programs/zellij.nix { inherit pkgs; });
+    zsh = (import ./programs/zsh.nix { inherit pkgs; });
   };
   programs.ssh.enable = true;
 }
