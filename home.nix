@@ -19,8 +19,10 @@
   # environment.
   home.packages = [
     pkgs.asdf-vm
+    pkgs.atuin
     pkgs.bat
     pkgs.bottom
+    pkgs.carapace
     pkgs.du-dust
     pkgs.eza
     pkgs.fd
@@ -35,8 +37,7 @@
     pkgs.starship
     pkgs.zoxide
 
-    pkgs.atuin
-    pkgs.carapace
+    # Apps
     pkgs.gitui
     pkgs.sublime-merge
   ];

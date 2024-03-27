@@ -14,6 +14,7 @@
     eval "$(atuin init zsh --disable-up-arrow)"
     eval "$(zoxide init zsh)"
     eval "$(starship init zsh)"
+    # eval "$(zellij setup --generate-auto-start zsh)"
   '';
 
   profileExtra = ''
