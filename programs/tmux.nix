@@ -2,7 +2,7 @@
 
 # @ref https://github.com/nix-community/home-manager/blob/master/modules/programs/tmux.nix
 {
-  enable = false;
+  enable = true;
 
   clock24 = true;
   mouse = true;

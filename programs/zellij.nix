@@ -2,7 +2,7 @@
 
 # @ref https://github.com/nix-community/home-manager/blob/master/modules/programs/zellij.nix
 {
-  enable = false;
+  enable = true;
 
   settings = {
     default_layout = "compact";

@@ -18,7 +18,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.asdf-vm
     pkgs.bat
     pkgs.bottom
     pkgs.du-dust
@@ -62,14 +61,15 @@
   #  /etc/profiles/per-user/leesiongchan/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    # Scale HiDPI (WSL)
+    GDK_DPI_SCALE = 1.5;
+    GDK_SCALE = 2;
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   programs = {
-    atuin.enable = true;
     carapace.enable = true;
     eza.enable = true;
     fzf.enable = true;
@@ -77,11 +77,13 @@
     ssh.enable = true;
     zoxide.enable = true;
 
+    atuin = (import ./programs/atuin.nix { inherit pkgs; });
     git = (import ./programs/git.nix { inherit pkgs; });
-    nushell = (import ./programs/nushell.nix { inherit pkgs; });
+    mise = (import ./programs/mise.nix { inherit pkgs; });
+    # nushell = (import ./programs/nushell.nix { inherit pkgs; });
     starship = (import ./programs/starship.nix { inherit pkgs; });
-    tmux = (import ./programs/tmux.nix { inherit pkgs; });
-    zellij = (import ./programs/zellij.nix { inherit pkgs; });
+    # tmux = (import ./programs/tmux.nix { inherit pkgs; });
+    # zellij = (import ./programs/zellij.nix { inherit pkgs; });
     zsh = (import ./programs/zsh.nix { inherit pkgs; });
   };
 }
