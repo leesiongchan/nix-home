@@ -2,14 +2,16 @@
 
 # @ref https://github.com/nix-community/home-manager/blob/master/modules/programs/git.nix
 {
-  enable = true;
+  programs.git = {
+    enable = true;
 
-  userName = "Harvey";
-  userEmail = "leesiongchan@duck.com";
+    userName = "Harvey";
+    userEmail = "leesiongchan@duck.com";
 
-  extraConfig = {
-    commit.gpgsign = true;
-    gpg.format = "ssh";
-    user.signingkey = "~/.ssh/id_ed25519.pub";
+    extraConfig = {
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      user.signingkey = "~/.ssh/id_ed25519.pub";
+    };
   };
 }

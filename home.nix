@@ -17,68 +17,29 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.bat
-    pkgs.bottom
-    pkgs.du-dust
-    pkgs.fd
-    pkgs.jq
-    pkgs.just
-    pkgs.neofetch
-    pkgs.ripgrep
+  home.packages = with pkgs; [
+    bat
+    bottom
+    du-dust
+    fd
+    jq
+    just
+    neofetch
+    ripgrep
 
     # Nix
-    pkgs.nil
-    pkgs.nixpkgs-fmt
+    nil
+    nixpkgs-fmt
 
     # Rust
-    pkgs.cargo-binstall
-    pkgs.rustup
+    cargo-binstall
+    rustup
 
     # Apps
-    pkgs.gitui
-    pkgs.sublime-merge
+    gitui
+    sublime-merge
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    ".aws/config".text = ''
-      [profile configura-analytics-test]
-      sso_session = configura
-      sso_account_id = 545608796330
-      sso_role_name = AWSAdministratorAccess
-      region = eu-central-1
-      
-      [sso-session configura]
-      sso_start_url = https://configura.awsapps.com/start#/
-      sso_region = eu-central-1
-      sso_registration_scopes = sso:account:access
-    '';
-  };
-  # TODO: move to thefuck.nix
-  # Fix WSL slowness
-  # @see https://github.com/nvbn/thefuck/wiki/Troubleshooting#wsl-fix-slowness
-  home.file.".config/thefuck/settings.py" = {
-    force = true;
-    text = ''
-      excluded_search_path_prefixes = ['/mnt/']
-      require_confirmation = False
-      wait_command = 3
-    '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
-  # either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/leesiongchan/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     # Scale HiDPI (WSL)
     GDK_DPI_SCALE = 1.5;
@@ -97,15 +58,20 @@
     navi.enable = true;
     ssh.enable = true;
     zoxide.enable = true;
-
-    atuin = (import ./programs/atuin.nix { inherit pkgs; });
-    git = (import ./programs/git.nix { inherit pkgs; });
-    mise = (import ./programs/mise.nix { inherit pkgs; });
-    # nushell = (import ./programs/nushell.nix { inherit pkgs; });
-    starship = (import ./programs/starship.nix { inherit pkgs; });
-    thefuck = (import ./programs/thefuck.nix { inherit pkgs; });
-    # tmux = (import ./programs/tmux.nix { inherit pkgs; });
-    # zellij = (import ./programs/zellij.nix { inherit pkgs; });
-    zsh = (import ./programs/zsh.nix { inherit pkgs; });
   };
+
+  imports = [
+    ./programs/atuin.nix
+    ./programs/git.nix
+    ./programs/mise.nix
+    # ./programs/nushell.nix
+    ./programs/starship.nix
+    ./programs/thefuck.nix
+    # ./programs/tmux.nix
+    # ./programs/zellij.nix
+    ./programs/zsh.nix
+
+    ./dotfiles.nix
+    ./theme.nix
+  ];
 }
