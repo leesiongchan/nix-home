@@ -19,23 +19,16 @@
   # environment.
   home.packages = [
     pkgs.asdf-vm
-    pkgs.atuin
     pkgs.bat
     pkgs.bottom
-    pkgs.carapace
     pkgs.du-dust
-    pkgs.eza
     pkgs.fd
-    pkgs.fzf
     pkgs.jq
     pkgs.just
-    pkgs.navi
     pkgs.nil
     pkgs.nixpkgs-fmt
     pkgs.ripgrep
     pkgs.rustup
-    pkgs.starship
-    pkgs.zoxide
 
     # Apps
     pkgs.gitui
@@ -76,11 +69,19 @@
   programs.home-manager.enable = true;
 
   programs = {
+    atuin.enable = true;
+    carapace.enable = true;
+    eza.enable = true;
+    fzf.enable = true;
+    navi.enable = true;
+    ssh.enable = true;
+    zoxide.enable = true;
+
     git = (import ./programs/git.nix { inherit pkgs; });
     nushell = (import ./programs/nushell.nix { inherit pkgs; });
+    starship = (import ./programs/starship.nix { inherit pkgs; });
     tmux = (import ./programs/tmux.nix { inherit pkgs; });
     zellij = (import ./programs/zellij.nix { inherit pkgs; });
     zsh = (import ./programs/zsh.nix { inherit pkgs; });
   };
-  programs.ssh.enable = true;
 }

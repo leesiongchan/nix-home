@@ -1,5 +1,6 @@
 { pkgs, ... }:
 
+# @ref https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
 {
   enable = true;
 
@@ -7,14 +8,6 @@
     # Fancy ls colors
     # @ref https://github.com/sharkdp/vivid
     export LS_COLORS="$(${pkgs.vivid}/bin/vivid generate dracula)"
-
-    # @ref https://carapace-sh.github.io/carapace-bin/setup.html#zsh
-    source <(carapace _carapace)
-
-    eval "$(atuin init zsh --disable-up-arrow)"
-    eval "$(zoxide init zsh)"
-    eval "$(starship init zsh)"
-    # eval "$(zellij setup --generate-auto-start zsh)"
   '';
 
   profileExtra = ''
@@ -49,9 +42,6 @@
       # ZSH_TMUX_AUTOSTART=true
       # ZSH_TMUX_CONFIG=$HOME/.config/tmux/tmux.conf
       # ZSH_TMUX_AUTOCONNECT=false
-
-      # Zellij
-      # eval "$(zellij setup --generate-auto-start zsh)"
     '';
     plugins = [ "docker" "docker-compose" "fzf" "git" "gitignore" "kubectl" "ripgrep" "rust" "zoxide" ];
   };
