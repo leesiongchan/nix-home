@@ -2,8 +2,6 @@
 
 {
   programs.starship.settings = {
-    # Dracula theme
-    # @see https://starship.rs/installing/#nix
     aws.style = "bold #ffb86c";
     cmd_duration.style = "bold #f1fa8c";
     directory.style = "bold #50fa7b";
@@ -24,10 +22,9 @@
     {
       plugin = dracula;
       extraConfig = ''
-        set -g @dracula-plugins "cpu-usage ram-usage"
-        set -g @dracula-refresh-rate 10
         set -g @dracula-show-battery false
         set -g @dracula-show-powerline true
+        set -g @dracula-refresh-rate 10
       '';
     }
   ];
@@ -36,17 +33,17 @@
     theme = "dracula";
     themes = {
       dracula = {
+        fg = [ 248 248 242 ];
         bg = [ 40 42 54 ];
+        black = [ 0 0 0 ];
         red = [ 255 85 85 ];
         green = [ 80 250 123 ];
         yellow = [ 241 250 140 ];
         blue = [ 98 114 164 ];
         magenta = [ 255 121 198 ];
-        orange = [ 255 184 108 ];
-        fg = [ 248 248 242 ];
         cyan = [ 139 233 253 ];
-        black = [ 0 0 0 ];
         white = [ 255 255 255 ];
+        orange = [ 255 184 108 ];
       };
     };
   };

@@ -61,7 +61,7 @@
   };
 
   imports = [
-    ./programs/atuin.nix
+    # ./programs/atuin.nix
     ./programs/git.nix
     ./programs/mise.nix
     # ./programs/nushell.nix
@@ -71,7 +71,6 @@
     # ./programs/zellij.nix
     ./programs/zsh.nix
 
-    ./dotfiles.nix
     ./theme.nix
   ];
 }
